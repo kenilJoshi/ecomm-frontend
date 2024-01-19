@@ -126,6 +126,7 @@ function ProductPage() {
     const addToWishlist = async (id) => {
         console.log(userCtx.token);
         if (userCtx.wishlist == null) {
+            setIsBookMarked(true)
             const addwishlist = await axios.post(`https://backend-for-ecomm.vercel.app/api/v1/addWishList/${id}`, {}, {
                 headers: {
                     Authorization: userCtx.token
@@ -138,6 +139,7 @@ function ProductPage() {
         }else{
             const isElementPresent = userCtx.wishlist.findIndex(listitem => listitem.product_id === parseInt(params.id))
             if (isElementPresent > -1) {
+                setIsBookMarked(false)
                 const removeWishlist= await axios.delete(`https://backend-for-ecomm.vercel.app/api/v1/removewishlist/${userCtx.wishlist[isElementPresent].id}`, {
                     headers: {
                         Authorization: userCtx.token
@@ -149,6 +151,7 @@ function ProductPage() {
                 console.log(userCtx);
 
             } else {
+                setIsBookMarked(true)
                 const addwishlist = await axios.post(`https://backend-for-ecomm.vercel.app/api/v1/addWishList/${id}`, {}, {
                 headers: {
                     Authorization: userCtx.token
