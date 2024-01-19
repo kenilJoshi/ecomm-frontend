@@ -37,12 +37,12 @@ function Layout() {
           Authorization: token
         }
       })
-      const getwishlist = await axios.get("https://backend-for-ecomm.vercel.app/api/v1/wishlist", {
-        headers: {
-          Authorization: token
-        }
-      })
-      userCtx.addWishlist(getwishlist.data.userWishlist)
+      // const getwishlist = await axios.get("https://backend-for-ecomm.vercel.app/api/v1/wishlist", {
+      //   headers: {
+      //     Authorization: token
+      //   }
+      // })
+      // userCtx.addWishlist(getwishlist.data.userWishlist)
       userCtx.authenticate(getUser, token)
       console.log(userCtx);
       // console.log('is it authenticated', userCtx.isAuthenticated);
