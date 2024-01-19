@@ -70,7 +70,7 @@ function Register() {
         axios.post('https://backend-for-ecomm.vercel.app/api/v1/signup', user).then((res) => {
             const data = res.data["user"]
             const token = res.data["token"]
-            console.log(data);
+            console.log(token);
             setUser({name: data.name, email: data.email})
             localStorage.clear()
             localStorage.setItem('user-token', `Bearer ${token}`)
