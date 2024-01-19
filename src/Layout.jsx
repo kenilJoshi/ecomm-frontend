@@ -37,6 +37,7 @@ function Layout() {
           Authorization: token
         }
       })
+      userCtx.authenticate(getUser, token)
       const getwishlist = await axios.get("https://backend-for-ecomm.vercel.app/api/v1/wishlist", {
         headers: {
           Authorization: token
@@ -45,7 +46,6 @@ function Layout() {
       if(getwishlist.status !== 400){
         userCtx.addWishlist(getwishlist.data.userWishlist)
       }
-      userCtx.authenticate(getUser, token)
       console.log(userCtx);
       // console.log('is it authenticated', userCtx.isAuthenticated);
     } else {
