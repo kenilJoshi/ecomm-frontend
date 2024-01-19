@@ -15,7 +15,7 @@ function Cart() {
   const handleCheckOutCall = async (obj) => {
     let token = userCtx.token
     // const response = usePostApi('http://localhost:3000/api/v1/cartCreate', obj, token)
-    const response = await axios.post('http://localhost:3000/api/v1/cartCreate', obj, {
+    const response = await axios.post('https://backend-for-ecomm.vercel.app/api/v1/cartCreate', obj, {
       headers:{
         Authorization: token
       }
