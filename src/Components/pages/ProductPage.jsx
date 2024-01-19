@@ -51,7 +51,7 @@ function ProductPage() {
 
         } else {
             let id = params.id
-            const product = await axios.get(`http://localhost:3000/api/v1/product/${id}`)
+            const product = await axios.get(`https://backend-for-ecomm.vercel.app/api/v1/product/${id}`)
             if (product.data.length !== 0) {
                 setProductInfo(product.data[0]);
                 const myImage = cld.image(product.data[0].picture_id);
@@ -62,7 +62,7 @@ function ProductPage() {
 
                 setMyImageUrl(myImage.toURL());
 
-                const filterProduct = await axios.get(`http://localhost:3000/api/v1/recommandProduct/?limit=6&name=${product.data[0].name}`)
+                const filterProduct = await axios.get(`https://backend-for-ecomm.vercel.app/api/v1/recommandProduct/?limit=6&name=${product.data[0].name}`)
 
                 if (filterProduct.data.length !== 0) {
                     setRecommandedArr(filterProduct.data)
@@ -74,7 +74,7 @@ function ProductPage() {
     const findwishlist = async () =>{
         const token = localStorage.getItem("user-token");
         if (token) {
-          const getwishlist = await axios.get("http://localhost:3000/api/v1/wishlist", {
+          const getwishlist = await axios.get("https://backend-for-ecomm.vercel.app/api/v1/wishlist", {
             headers: {
               Authorization: token
             }
@@ -126,7 +126,7 @@ function ProductPage() {
     const addToWishlist = async (id) => {
         console.log(userCtx.token);
         if (userCtx.wishlist == null) {
-            const addwishlist = await axios.post(`http://localhost:3000/api/v1/addWishList/${id}`, {}, {
+            const addwishlist = await axios.post(`https://backend-for-ecomm.vercel.app/api/v1/addWishList/${id}`, {}, {
                 headers: {
                     Authorization: userCtx.token
                 }
@@ -138,7 +138,7 @@ function ProductPage() {
         }else{
             const isElementPresent = userCtx.wishlist.findIndex(listitem => listitem.product_id === parseInt(params.id))
             if (isElementPresent > -1) {
-                const removeWishlist= await axios.delete(`http://localhost:3000/api/v1/removewishlist/${userCtx.wishlist[isElementPresent].id}`, {
+                const removeWishlist= await axios.delete(`https://backend-for-ecomm.vercel.app/api/v1/removewishlist/${userCtx.wishlist[isElementPresent].id}`, {
                     headers: {
                         Authorization: userCtx.token
                     }   
@@ -149,7 +149,7 @@ function ProductPage() {
                 console.log(userCtx);
 
             } else {
-                const addwishlist = await axios.post(`http://localhost:3000/api/v1/addWishList/${id}`, {}, {
+                const addwishlist = await axios.post(`https://backend-for-ecomm.vercel.app/api/v1/addWishList/${id}`, {}, {
                 headers: {
                     Authorization: userCtx.token
                 }
