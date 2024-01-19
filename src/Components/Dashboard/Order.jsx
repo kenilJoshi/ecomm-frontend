@@ -11,7 +11,7 @@ import axios from "axios";
 
 function Order() {
   const userCtx = useContext(UserContext)
-  const { isLoading, serverError, apiData } = useFetch('http://localhost:3000/api/v1/order', userCtx.token)
+  const { isLoading, serverError, apiData } = useFetch('https://backend-for-ecomm.vercel.app/api/v1/order', userCtx.token)
   
   const options = {
     year: 'numeric',
