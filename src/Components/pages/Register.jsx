@@ -67,7 +67,7 @@ function Register() {
     }
 
     const uploadUser = (user) => {
-        axios.post('http://localhost:3000/api/v1/signup', user).then((res) => {
+        axios.post('https://backend-for-ecomm.vercel.app/api/v1/signup', user).then((res) => {
             const data = res.data["user"]
             const token = res.data["token"]
             console.log(data);
