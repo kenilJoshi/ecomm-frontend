@@ -25,7 +25,7 @@ const initialState = {
 }
 
 const userReducer =  (state, action) => {
-
+    console.log(action);
     if(action.type === 'LOGIN'){
         console.log('in authcontext',action);
         localStorage.clear()
