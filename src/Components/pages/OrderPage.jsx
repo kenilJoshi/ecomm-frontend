@@ -8,7 +8,7 @@ function OrderPage() {
     const userCtx = useContext(UserContext)
     const { id } = useParams()
     console.log(userCtx);
-    const { isLoading, serverError, apiData } = useFetch(`http://localhost:3000/api/v1/orderDetail/${id}`, userCtx.token)
+    const { isLoading, serverError, apiData } = useFetch(`https://backend-for-ecomm.vercel.app/api/v1/orderDetail/${id}`, userCtx.token)
     console.log(apiData);
 
     const options = {
