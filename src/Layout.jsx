@@ -42,7 +42,9 @@ function Layout() {
           Authorization: token
         }
       })
-      userCtx.addWishlist(getwishlist.data.userWishlist)
+      if(getwishlist.status !== 400){
+        userCtx.addWishlist(getwishlist.data.userWishlist)
+      }
       userCtx.authenticate(getUser, token)
       console.log(userCtx);
       // console.log('is it authenticated', userCtx.isAuthenticated);
