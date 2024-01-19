@@ -6,7 +6,7 @@ import useFetch from '../../Hooks/useFetchApi'
 
 function Wishlist() {
     const userCtx = useContext(UserContext)
-    const wishlist = useFetch('http://localhost:3000/api/v1/wishlistProduct', userCtx.token)
+    const wishlist = useFetch('https://backend-for-ecomm.vercel.app/api/v1/wishlistProduct', userCtx.token)
 
   return (
     <div className='p-24'>
