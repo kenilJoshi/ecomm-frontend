@@ -71,7 +71,7 @@ function Register() {
             const data = res.data["user"]
             const token = res.data["token"]
             console.log(token);
-            setUser({name: data.name, email: data.email})
+            // setUser({name: data.name, email: data.email})
             localStorage.clear()
             localStorage.setItem('user-token', `Bearer ${token}`)
             toast.success('Registeration Successfull')
