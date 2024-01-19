@@ -37,7 +37,7 @@ function Layout() {
           Authorization: token
         }
       })
-      const getwishlist = await axios.get("http://localhost:3000/api/v1/wishlist", {
+      const getwishlist = await axios.get("https://backend-for-ecomm.vercel.app/api/v1/wishlist", {
         headers: {
           Authorization: token
         }
