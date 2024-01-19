@@ -23,7 +23,7 @@ function ResetPassword() {
         let confirmPassword = confirmPasswordRef.current.value
         
         if(validateForm({password, confirmPassword})){
-            axios.post(`http://localhost:3000/api/v1/reset/${param.id}`,{password}).then((res) => {
+            axios.post(`https://backend-for-ecomm.vercel.app/api/v1/reset/${param.id}`,{password}).then((res) => {
                 if(res){
                     toast.success('The Password has been changed')
                     navigate('/signin')

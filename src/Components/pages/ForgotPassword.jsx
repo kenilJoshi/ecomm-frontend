@@ -18,7 +18,7 @@ function ForgotPassword() {
         let email = emailRef.current.value
 
         if(validateForm(email)){
-            axios.post('http://localhost:3000/api/v1/forgetPassword', {email}).then((res) => {
+            axios.post('https://backend-for-ecomm.vercel.app/api/v1/forgetPassword', {email}).then((res) => {
                 toast.success("Email Sent")
             }).catch((e) => {
                 toast.error('Server error')

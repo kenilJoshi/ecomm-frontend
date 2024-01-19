@@ -23,7 +23,7 @@ function AdminProtectedRoute(props) {
         } else if (userCtx.isAuthenticated == false) {
             const token = localStorage.getItem("user-token");
             if (token) {
-                const getUser = await axios.get('http://localhost:3000/api/v1/userDashboard', {
+                const getUser = await axios.get('https://backend-for-ecomm.vercel.app/api/v1/userDashboard', {
                     headers: {
                         Authorization: token
                     }
