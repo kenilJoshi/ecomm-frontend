@@ -82,7 +82,6 @@ function ProductPage() {
           userCtx.addWishlist(getwishlist.data.userWishlist)
           if (getwishlist.data.userWishlist) {
             const isElementPresent = getwishlist.data.userWishlist.findIndex(listitem => listitem.product_id === parseInt(params.id))
-            console.log(isElementPresent);
             if (isElementPresent > -1) {
                 setIsBookMarked(true)
             } else {
@@ -103,9 +102,7 @@ function ProductPage() {
         getProductInfo()
         if (userCtx.wishlist !== null) {
             const isElementPresent = userCtx.wishlist.findIndex(listitem => listitem.product_id === parseInt(params.id))
-            console.log(isElementPresent);
             if (isElementPresent > -1) {
-                console.log('iselement present');
                 setIsBookMarked(true)
             } else {
                 setIsBookMarked(false)
@@ -118,13 +115,11 @@ function ProductPage() {
     const addToCart = () => {
         if (userCtx.isAuthenticated) {
             cartCtx.addItem(productInfo)
-            console.log(cartCtx);
             toast.success('Added to Cart')
         }
     }
 
     const addToWishlist = async (id) => {
-        console.log(userCtx.token);
         if (userCtx.wishlist == null) {
             setIsBookMarked(true)
             const addwishlist = await axios.post(`https://backend-for-ecomm.vercel.app/api/v1/addWishList/${id}`, {}, {
@@ -148,7 +143,6 @@ function ProductPage() {
                 // console.log(removeWishlist);
                 userCtx.removeWishlist(userCtx.wishlist[isElementPresent].id)
                 setIsBookMarked(false)
-                console.log(userCtx);
 
             } else {
                 setIsBookMarked(true)

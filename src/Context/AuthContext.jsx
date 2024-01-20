@@ -25,9 +25,7 @@ const initialState = {
 }
 
 const userReducer =  (state, action) => {
-    console.log(action);
     if(action.type === 'LOGIN'){
-        console.log('in authcontext',action);
         localStorage.clear()
         localStorage.setItem('user-token', `Bearer ${action.token}`)
         state.token = action.token
@@ -122,7 +120,6 @@ export function UserContextProvider({children}) {
         ...userContext,
       };
 
-      console.log(contextValue);
 
     return <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
 }

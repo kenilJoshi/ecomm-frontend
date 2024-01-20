@@ -16,7 +16,6 @@ function Home() {
 
   const productList = async () => {
     let productList = await axios.get('https://backend-for-ecomm.vercel.app/api/v1/products')
-    console.log(productList);
     if (productList.data.length !== 0) {
 
       productCtx.addProduct(productList)

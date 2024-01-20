@@ -27,10 +27,8 @@ export function ProductContextProvider({children}){
     const [product, dispatchProductAction] = useReducer(productReducer, initialState)
 
     function addProduct(product) {
-        console.log('here');
         dispatchProductAction({type: 'ADD_PRODUCT', product})
     }
-    console.log(product);
 
     const productContext = {
         product: product.product,

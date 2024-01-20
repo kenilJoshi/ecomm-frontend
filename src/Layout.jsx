@@ -30,7 +30,6 @@ function Layout() {
 
   const auth = async () => {
     const token = localStorage.getItem("user-token");
-    console.log(token);
     if (token) {
       const getUser = await axios.get('https://backend-for-ecomm.vercel.app/api/v1/userDashboard', {
         headers: {
@@ -46,7 +45,6 @@ function Layout() {
       if(getwishlist.status !== 400){
         userCtx.addWishlist(getwishlist.data.userWishlist)
       }
-      console.log(userCtx);
       // console.log('is it authenticated', userCtx.isAuthenticated);
     } else {
       return false

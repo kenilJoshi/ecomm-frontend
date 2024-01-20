@@ -24,8 +24,6 @@ export function AddressContextProvider({children}) {
         showAddress,
         hideAddress
     }
-
-    console.log(address);
     return <AddressContext.Provider value={addressCtx}>{children}</AddressContext.Provider>
 }
 

@@ -14,7 +14,6 @@ function AddressForm() {
     if(addressRef.current.value !== ''){
       userCtx.addAddress(addressRef.current.value)
       addressCtx.hideAddress()
-      console.log(addressCtx.openAddress);
     }else{
       setAddressError('Required')
     }

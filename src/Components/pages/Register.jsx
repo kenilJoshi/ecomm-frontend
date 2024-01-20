@@ -94,7 +94,6 @@ function Register() {
             setEmailError('')
         }
         if (emailRegex.test(detail.email) == false) {
-            console.log(detail.email);
             setEmailError('Enter valid email')
             return false
         } else {

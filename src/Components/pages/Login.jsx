@@ -35,7 +35,6 @@ function Login() {
                     return
                 }
                 toast.success('Logged in Successfull')
-                console.log(data);
                 userCtx.login(data, token)
                 userCtx.authenticate(data, token)
                 navigate('/')

@@ -7,7 +7,6 @@ function ProtectedRoute(props) {
     const navigate = useNavigate()
     const userCtx = useContext(UserContext);
 
-    console.log(props.children);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isUser, setIsUser] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
@@ -18,7 +17,6 @@ function ProtectedRoute(props) {
             setIsLoggedIn(false)
             return navigate('/signin')
         }else if(userCtx.isAuthenticated){
-            console.log('here in pr');
             setIsLoggedIn(true);
         }else if(userCtx.isAuthenticated == false){
             const token = localStorage.getItem("user-token");

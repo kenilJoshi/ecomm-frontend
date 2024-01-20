@@ -7,6 +7,7 @@ import useFetch from '../../Hooks/useFetchApi'
 function Wishlist() {
     const userCtx = useContext(UserContext)
     const wishlist = useFetch('https://backend-for-ecomm.vercel.app/api/v1/wishlistProduct', userCtx.token)
+    console.log(wishlist);
 
   return (
     <div className='p-24'>
@@ -14,7 +15,7 @@ function Wishlist() {
         {wishlist.isLoading && <p>loading...</p>}
 
         {wishlist.apiData &&
-        wishlist.apiData.wishlistwithProductdetail.length !== 0 
+        wishlist.apiData.wishlistwithProductdetail !== null  
         ?
         <div className='flex gap-7 py-14 flex-wrap pl-14'>
         {wishlist.apiData.wishlistwithProductdetail.map((product) => (

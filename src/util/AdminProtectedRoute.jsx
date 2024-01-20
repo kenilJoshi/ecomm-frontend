@@ -7,7 +7,6 @@ function AdminProtectedRoute(props) {
     const navigate = useNavigate()
     const userCtx = useContext(UserContext);
 
-    console.log(props.children);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
 
@@ -17,7 +16,6 @@ function AdminProtectedRoute(props) {
             setIsLoggedIn(false)
             return navigate('/signin')
         } else if (userCtx.isAuthenticated && userCtx.user.data.role == 'admin') {
-            console.log('here in pr');
 
             setIsLoggedIn(true);
         } else if (userCtx.isAuthenticated == false) {
