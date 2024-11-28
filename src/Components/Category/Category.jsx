@@ -30,7 +30,7 @@ function Category() {
     }
   }, [searchInput, productCtx.product])
 
-
+// https://backend-for-ecomm.vercel.app
   const productList = async () => {
     setIsLoading(true)
     let productList = await axios.get('https://backend-for-ecomm.vercel.app/api/v1/products')

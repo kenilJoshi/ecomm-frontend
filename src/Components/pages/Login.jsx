@@ -39,7 +39,11 @@ function Login() {
                 userCtx.authenticate(data, token)
                 navigate('/')
             }).catch((e) => {
-                toast.error('Server error')
+                if(e.response.data !== undefined){
+                    toast.error(e.response.data)
+                }else{
+                    toast.error("Server Error")
+                }
             })
         }
     }

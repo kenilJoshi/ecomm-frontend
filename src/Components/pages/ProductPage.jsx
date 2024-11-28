@@ -116,46 +116,56 @@ function ProductPage() {
         if (userCtx.isAuthenticated) {
             cartCtx.addItem(productInfo)
             toast.success('Added to Cart')
+        }else{
+            toast.error('Please First Login')
         }
     }
 
     const addToWishlist = async (id) => {
-        if (userCtx.wishlist == null) {
-            setIsBookMarked(true)
-            const addwishlist = await axios.post(`https://backend-for-ecomm.vercel.app/api/v1/addWishList/${id}`, {}, {
-                headers: {
-                    Authorization: userCtx.token
-                }
-            })
-            if (addwishlist.data) {
-                userCtx.addWishlist(addwishlist.data.wishlist)
-                setIsBookMarked(true)
-            }
-        }else{
-            const isElementPresent = userCtx.wishlist.findIndex(listitem => listitem.product_id === parseInt(params.id))
-            if (isElementPresent > -1) {
-                setIsBookMarked(false)
-                const removeWishlist= await axios.delete(`https://backend-for-ecomm.vercel.app/api/v1/removewishlist/${userCtx.wishlist[isElementPresent].id}`, {
-                    headers: {
-                        Authorization: userCtx.token
-                    }   
-                })
-                // console.log(removeWishlist);
-                userCtx.removeWishlist(userCtx.wishlist[isElementPresent].id)
-                setIsBookMarked(false)
-
-            } else {
+        console.log("------------------------->>>>>",id);
+        
+        if(userCtx.isAuthenticated){
+            if (userCtx.wishlist == null) {
                 setIsBookMarked(true)
                 const addwishlist = await axios.post(`https://backend-for-ecomm.vercel.app/api/v1/addWishList/${id}`, {}, {
-                headers: {
-                    Authorization: userCtx.token
+                    headers: {
+                        Authorization: userCtx.token
+                    }
+                })
+                if (addwishlist.data) {
+                    userCtx.addWishlist(addwishlist.data.wishlist)
+                    setIsBookMarked(true)
                 }
-            })
-            if (addwishlist.data) {
-                userCtx.addWishlist(addwishlist.data.wishlist)
-                setIsBookMarked(true)
+            }else{
+                const isElementPresent = userCtx.wishlist.findIndex(listitem => listitem.product_id === parseInt(params.id))
+                if (isElementPresent > -1) {
+                    setIsBookMarked(false)
+                    const removeWishlist= await axios.delete(`https://backend-for-ecomm.vercel.app/api/v1/removewishlist/${userCtx.wishlist[isElementPresent].id}`, {
+                        headers: {
+                            Authorization: userCtx.token
+                        }   
+                    })
+                    // console.log(removeWishlist);
+                    userCtx.removeWishlist(userCtx.wishlist[isElementPresent].id)
+                    setIsBookMarked(false)
+    
+                } else {
+                    setIsBookMarked(true)
+                    const addwishlist = await axios.post(`https://backend-for-ecomm.vercel.app/api/v1/addWishList/${id}`, {}, {
+                    headers: {
+                        Authorization: userCtx.token
+                    }
+                })
+                if (addwishlist.data) {
+                    userCtx.addWishlist(addwishlist.data.wishlist)
+                    setIsBookMarked(true)
+                }
+                }
             }
-            }
+        }else{
+            console.log("Kenil");
+            
+            toast.error('Please First Login')
         }
     }
 

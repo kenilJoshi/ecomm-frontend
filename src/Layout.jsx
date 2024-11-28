@@ -27,7 +27,7 @@ function Layout() {
   useEffect(() => {
     checkLocation();
   }, [pathname]);
-
+  // https://backend-for-ecomm.vercel.app
   const auth = async () => {
     const token = localStorage.getItem("user-token");
     if (token) {
